@@ -1,0 +1,12 @@
+{
+  "name": "sweetvalidation",
+  "version": "1.0.0",
+  "main": "dist/sweetvalidation.js",
+  "ignore": [
+    ".gitignore",
+    "**/*.md"
+  ],
+  "dependencies": {
+    "underscore": "~1.4.0"
+  }
+}
