@@ -24,6 +24,13 @@ class Validator
       else
         [message]
 
+  @validEmail: (message = "Invalid email address") ->
+    (subject, field, callback) ->
+      callback if validEmail.test trim subject[field]
+        []
+      else
+        [message]
+
 accumulateErrors = (evaluatorPairs, subject, errors, callback) ->
   if !evaluatorPairs.length
     callback errors, _.isEmpty(errors)
@@ -41,7 +48,8 @@ accumulateErrors = (evaluatorPairs, subject, errors, callback) ->
 
       accumulateErrors remainingPairs, subject, newErrorsMap, callback
 
-trim = (str) -> str?.replace(/^\s+|\s+$/g)
+trim       = (str) -> str?.replace(/^\s+|\s+$/g)
+validEmail = /[^@]+@[^.]+\..+/
 
 if module?
   module.exports = Validator

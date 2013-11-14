@@ -1,8 +1,8 @@
 (function() {
-  var Validator, accumulateErrors, exports, trim, _,
+  var Validator, accumulateErrors, exports, trim, validEmail, _,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  _ = typeof window !== "undefined" && window !== null ? window._ : require("underscore");
+  _ = (typeof window !== "undefined" && window !== null) && (window.require == null) ? window._ : require("underscore");
 
   Validator = (function() {
     function Validator(evaluators) {
@@ -36,6 +36,15 @@
       };
     };
 
+    Validator.validEmail = function(message) {
+      if (message == null) {
+        message = "Invalid email address";
+      }
+      return function(subject, field, callback) {
+        return callback(validEmail.test(trim(subject[field])) ? [] : [message]);
+      };
+    };
+
     return Validator;
 
   })();
@@ -58,6 +67,8 @@
   trim = function(str) {
     return str != null ? str.replace(/^\s+|\s+$/g) : void 0;
   };
+
+  validEmail = /[^@]+@[^.]+\..+/;
 
   if (typeof module !== "undefined" && module !== null) {
     module.exports = Validator;
