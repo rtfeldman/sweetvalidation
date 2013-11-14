@@ -1,4 +1,7 @@
-_ = _ ? require "underscore"
+_ = if window? and !window.require?
+  window._
+else
+  require "underscore"
 
 class Validator
   constructor: (evaluators = {}) ->

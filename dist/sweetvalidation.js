@@ -2,7 +2,7 @@
   var Validator, accumulateErrors, exports, trim, _,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  _ = _ != null ? _ : require("underscore");
+  _ = typeof window !== "undefined" && window !== null ? window._ : require("underscore");
 
   Validator = (function() {
     function Validator(evaluators) {
