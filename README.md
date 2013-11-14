@@ -2,7 +2,7 @@
 
 A sweet library for potentially asynchronous validations.
 
-Depends on [underscore.js](http://underscorejs.org).
+Depends on [underscore.js](http://underscorejs.org) or [Lo-Dash](http://lodash.com/).
 
 ```javascript
   new Validator({
